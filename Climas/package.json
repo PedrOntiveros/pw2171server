@@ -1,0 +1,26 @@
+{
+  "name": "clima",
+  "version": "1.0.0",
+  "description": "Regresa el clima de la ciudad tecleada.",
+  "main": "main.js",
+  "dependencies": {
+    "electron-require": "^0.3.0",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "electron": "^1.6.10",
+    "electron-require": "^0.3.0",
+    "jquery": "^3.2.1"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Clima",
+    "ciudad",
+    "Estado"
+  ],
+  "author": "Pedro Ontiveros",
+  "license": "ISC"
+}

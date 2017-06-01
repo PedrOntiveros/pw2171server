@@ -1,11 +1,12 @@
 <?php
 	require("utilerias.php");
-	function valida (){
+	function valida(){
 		$respuesta=false;
 		$conexion=conecta();
-		$u = getSQLValueString($_GET["usuario"],"text");
-		$c = GetSQLValueString(md5($_GET["clave"]),"text)");
-		$consulta=sprintf("select usuario, clave from usuarios where usuario=%s and clave=%s limit 1",$u,$c);
+		$u = GetSQLValueString($_POST["usuario"],"text");
+		$c = GetSQLValueString(md5($_POST["clave"]),"text");
+		$consulta=sprintf("select usuario, clave from usuarios
+						  where usuario=%s and clave=%s limit 1",$u,$c);
 		$resultado=mysql_query($consulta);
 		if(mysql_num_rows($resultado)>0){
 			$respuesta=true;
@@ -14,7 +15,7 @@
 		print(json_encode($salidaJSON));
 	}
 	//Menú Principal
-	$opcion=$_GET["opcion"];
+	$opcion=$_POST["opcion"];
 	switch ($opcion) {
 		case 'valida':
 			valida();

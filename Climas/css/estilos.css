@@ -1,0 +1,13 @@
+body{
+	font: 16px;
+	width: 1024px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#panelCabeza input{
+	width: 300px;
+	display: inline-block;
+	margin-top: 20px;
+}
+

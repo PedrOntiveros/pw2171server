@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>El Clima</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+	<section class="panel panel-primary">
+		<article class="panel-heading" id="panelCabeza">
+			<h2 class="panel-tittle">El clima el día de hoy</h2>
+			Ingrese el nombre de la ciudad y se mostrará el clima actual. 
+			<article id="inputs">
+				<input type="text" placeholder="Ciudad a buscar" class="form-control" id="txtCiudad">
+				<button id="btnBuscar" class="btn btn-success">Buscar</button>
+			</article>	
+		</article>
+		<article class="panel-body" id="panelInfo">
+			<article id="txtCordenadas"></article>
+			<article id="txtClima"></article>
+			<article id="txtBase"></article>
+			<article id="txtPrincipal"></article>
+			<article id="txtVisibilidad"></article>
+			<article id="txtViento"></article>
+			<article id="txtNubes"></article>
+			<article id="txtDt"></article>
+			<article id="txtSys"></article>
+			<article id="txtId"></article>
+			<article id="txtName"></article>
+			<article id="txtCodigo"></article>
+		</article>
+	</section>
+	<script>
+		require('./index.js')
+	</script>
+</body>
+</html>
