@@ -13,7 +13,10 @@ header nav ul li{
 header nav ul li button{
 	width: 89px;
 }
-#datosUsuario{
+#datosUsuario, #secUsuario{
 	margin: 0 auto;
 	width: 350px;
+}
+#secUsuario{
+	display: none;
 }

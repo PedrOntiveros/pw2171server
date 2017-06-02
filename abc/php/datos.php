@@ -14,11 +14,64 @@
 		$salidaJSON = array('respuesta' => $respuesta);
 		print(json_encode($salidaJSON));
 	}
+	function datosUsuario(){
+		$respuesta = false;
+		$usuario   = GetSQLValueString($_POST["usuario"],"text");
+		$conexion  = conecta();
+		$consulta  = sprintf("select * from usuarios where usuario=%s limit 1",$usuario);
+		$resultado = mysql_query($consulta);
+		$nombre="";
+		$clave="";
+		$departamento=0;
+		$vigencia=0;
+		if(mysql_num_rows($resultado)>0){
+			$respuesta = true;
+
+			if($registro=mysql_fetch_array($resultado)){
+				$nombre       =$registro["nombre"];
+				$clave        =$registro["clave"];
+				$departamento =$registro["departamento"];
+				$vigencia     =$registro["vigencia"];
+			}
+		}
+		$salidaJSON = array('respuesta'    => $respuesta,
+			 				'nombre' 	   => $nombre,
+			 				'clave' 	   => $clave,
+			 				'departamento' => $departamento,
+			 				'vigencia' 	   => $vigencia);
+		print json_encode($salidaJSON);
+	}
+	function alta(){
+		$respuesta=false;
+		$conexion=conecta();
+		$u = GetSQLValueString($_POST["usuario"],"text");
+		$n = GetSQLValueString($_POST["nombre"],"text");
+		$c = GetSQLValueString(md5($_POST["clave"]),"text");
+		$d = GetSQLValueString($_POST["departamento"],"int");
+		$v = GetSQLValueString($_POST["vigencia"],"int");
+		//Buscar si existe
+		$busca = sprintf("select usuario from usuario where usuario=%s", $u);
+		$resultadoBuscar = mysql_query($busca);
+		if(mysql_num_rows($resultadoBuscar)==0){//Si no existe
+			$inserta= sprintf("insert into usuarios values(default,%s,%s,%s,%d,%d)",$u,$n,$c,$d,$v);
+			if(mysql_affected_rows()>0){
+				$respuesta =true;
+			}
+		}
+		$salidaJSON =array('respuesta' => $respuesta);
+		print json_encode($salidaJSON);
+	}
 	//Menú Principal
 	$opcion=$_POST["opcion"];
 	switch ($opcion) {
 		case 'valida':
 			valida();
+			break;
+		case 'datosusuario':
+			datosUsuario();
+			break;
+		case 'alta':
+			alta();
 			break;
 		default:
 			# code...
